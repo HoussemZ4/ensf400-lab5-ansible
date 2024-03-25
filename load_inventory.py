@@ -1,7 +1,7 @@
 import ansible_runner
 import sys
 
-# list all host names and IP addresses:
+# list all host names, groups and IP addresses
 out, err, rc = ansible_runner.run_command(
     executable_cmd='ansible-inventory',
     cmdline_args=['--list', '--yaml'],
@@ -10,7 +10,7 @@ out, err, rc = ansible_runner.run_command(
     error_fd=sys.stderr
 )
 
-# Ping all hosts and output results
+# Ping hosts and output results
 out, err, rc = ansible_runner.run_command(
     executable_cmd='ansible',
     cmdline_args=['all:localhost', '-m', 'ping'],
